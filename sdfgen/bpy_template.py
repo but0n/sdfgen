@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     # fix matrix
     *aabb, = zip(*aabb)
-    scale = max([2/(y - x) for x, y in aabb])
+    scale = min([1/(y - x) for x, y in aabb][:2])
     print(f'Inverse Scale: {scale}')
     center = [-(x + (y - x) / 2) for x, y in aabb] # FIXME::
     # origin
@@ -88,8 +88,9 @@ if __name__ == '__main__':
 
 
 
-    fix_offset = getAABB(target)[0]
-    target.matrix_world.translation -= Vector(fix_offset)
+    *fix_offset, = zip(*getAABB(target))
+    center = [0.5-(x + (y - x) / 2) for x, y in fix_offset] # FIXME::
+    target.matrix_world.translation = Vector(center)
 
     camera_fit(target)
 
@@ -109,7 +110,7 @@ if __name__ == '__main__':
 
     # Render
     render = bpy.context.scene.render
-    render.resolution_x = render.resolution_y = 2048
+    render.resolution_x = render.resolution_y = 1024
 
 
     for i in range(resolution):
