@@ -3,7 +3,7 @@
 *Signed distance fields generation on GPUs*
 
 Example:
-![](https://user-images.githubusercontent.com/7625588/108215054-faaa0400-7184-11eb-8036-65ae81e3426b.png)
+![](https://user-images.githubusercontent.com/7625588/108367275-635cb380-724d-11eb-9ed3-3a1a56a88568.png)
 
 
 Usage:
